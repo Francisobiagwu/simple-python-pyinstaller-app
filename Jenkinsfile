@@ -70,14 +70,7 @@ pipeline {
                             sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F add2vals.py'"
                         }
                     }
-                    post {
-                        success {
-                            //This archiveArtifacts step archives the standalone executable file and exposes this file
-                            //through the Jenkins interface.
-                            archiveArtifacts "${env.BUILD_ID}/sources/dist/add2vals"
-                            sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
-                        }
-                    }
+                    
         }
     }
 }
